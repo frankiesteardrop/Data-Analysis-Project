@@ -1,0 +1,54 @@
+# Single source of truth for Phase 1. Every threshold here is frozen BEFORE any
+# model is trained; changing a value after seeing model results must be
+# reported as exploratory in the report.
+seed: 42
+
+data:
+  base_dir: data
+  url: https://storage.googleapis.com/download.tensorflow.org/data/mini_speech_commands.zip
+  zip_sha256: "49650f2341b26d886b46b3f4fb8fed59e30300b17550f1ee4a768b3106cf93a0"
+  expected_classes: ["down", "go", "left", "no", "right", "stop", "up", "yes"]   # quoted on purpose: bare no/yes are parsed as booleans by YAML
+  expected_files_per_class: 1000
+  expected_sample_rate: 16000
+
+audit:
+  target_len_samples: 16000   # 1 s @ 16 kHz (the length used for padding/cropping in Phase 2)
+  clip_threshold: 0.99        # |x| >= threshold counts as a clipped sample
+  clipped_file_frac: 0.01     # a file is "clipped" if >1% of its samples are clipped
+  very_short_sec: 0.5         # files shorter than this are flagged "very short"
+  frame_len: 400              # 25 ms @ 16 kHz, used for the frame-dynamics descriptor
+  frame_hop: 160              # 10 ms
+  # --- low-energy handling -------------------------------------------------------------
+  # low_energy_rms_dbfs only sets the DESCRIPTIVE flag `Low_Energy`. Files are excluded for
+  # low energy only if exclude_low_energy is true, which is decided by the blinded listening
+  # test (python -m src.energy_review score) using the rule frozen below, never by hand.
+  low_energy_rms_dbfs: -50.0
+  exclude_low_energy: false
+  low_energy_sweep_dbfs: [-40.0, -50.0, -60.0, -70.0]
+
+energy_review:                # blinded listening test (Phase 1, step 5) -- FROZEN BEFORE LISTENING
+  seed: 42
+  bin_edges_dbfs: [-70.0, -60.0, -50.0, -40.0, -30.0]   # bins: <-70, -70..-60, -60..-50, -50..-40, -40..-30, >=-30 (last bin = control)
+  n_per_bin: 6
+  peak_normalize_to: 0.7      # every clip is peak-normalised so loudness is not a cue
+  unusable_rate_threshold: 0.5   # a bin is "unusable" if >= 50% of its clips are not recognised as the labelled word
+  control_max_unusable_rate: 0.2 # if the control bin exceeds this, the listening protocol is invalid and must be repeated
+  out_dir: data/energy_review
+
+split:
+  ratios: {train: 0.8, val: 0.1, test: 0.1}   # ratios of FILES, assigned at SPEAKER level
+  out_dir: configs/splits
+
+eda:
+  n_samples_per_class: 3
+  n_fft: 400
+  hop_length: 160
+  n_mels: 64
+  fmax: 8000
+
+paths:
+  audit_csv: data/audit_table.csv
+  figures_dir: figures/phase1
+  tables_dir: reports/phase1/tables
+  summary_json: reports/phase1/audit_summary.json
+  listening_json: reports/phase1/listening_summary.json
