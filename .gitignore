@@ -1,1 +1,13 @@
-data/
+# raw / derived data (large) -- only data/README.md is tracked
+data/*
+!data/README.md
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# build artefacts
+reports/phase1/build/
+.DS_Store
