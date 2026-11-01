@@ -1,0 +1,273 @@
+{
+  "n_files": 8000,
+  "n_unreadable": 0,
+  "n_classes": 8,
+  "files_per_class": {
+    "down": 1000,
+    "go": 1000,
+    "left": 1000,
+    "no": 1000,
+    "right": 1000,
+    "stop": 1000,
+    "up": 1000,
+    "yes": 1000
+  },
+  "sample_rates": {
+    "16000": 8000
+  },
+  "channels": {
+    "1": 8000
+  },
+  "subtypes": {
+    "PCM_16": 8000
+  },
+  "n_nonstandard_filenames": 0,
+  "missing_values_per_column": {
+    "Word_Class": 0,
+    "Filename": 0,
+    "Speaker_ID": 0,
+    "Utt_Index": 0,
+    "Name_OK": 0,
+    "Sample_Rate": 0,
+    "Channels": 0,
+    "Subtype": 0,
+    "N_Samples": 0,
+    "Duration_sec": 0,
+    "Audio_MD5": 0,
+    "Peak": 0,
+    "RMS": 0,
+    "RMS_dBFS": 0,
+    "Clip_Frac": 0,
+    "DC_Offset": 0,
+    "ZCR": 0,
+    "Spec_Centroid_Hz": 0,
+    "Frame_Dyn_dB": 0,
+    "Low_Energy": 0,
+    "Clipped_File": 0,
+    "Very_Short": 0,
+    "Dup_CrossClass": 0,
+    "Dup_Extra": 0,
+    "Exclude_Reason": 0,
+    "Exclude": 0
+  },
+  "n_missing_values_total": 0,
+  "duration": {
+    "count": 8000.0,
+    "mean": 0.9837025156249999,
+    "std": 0.06142551465568253,
+    "min": 0.4266875,
+    "25%": 1.0,
+    "50%": 1.0,
+    "75%": 1.0,
+    "max": 1.0
+  },
+  "n_shorter_than_1s": 822,
+  "n_longer_than_1s": 0,
+  "n_exactly_1s": 7178,
+  "n_very_short": 8,
+  "n_zero_length": 0,
+  "frac_shorter_than_1s_per_class": {
+    "down": 0.088,
+    "go": 0.126,
+    "left": 0.07,
+    "no": 0.12,
+    "right": 0.096,
+    "stop": 0.089,
+    "up": 0.141,
+    "yes": 0.092
+  },
+  "rms_dbfs": {
+    "count": 8000.0,
+    "mean": -28.03058182410908,
+    "std": 9.51634653497037,
+    "min": -90.01972922947523,
+    "25%": -32.7772570526801,
+    "50%": -26.602995455488706,
+    "75%": -21.560351023768256,
+    "max": -5.472132093185741
+  },
+  "n_digital_silence": 0,
+  "low_energy_threshold_dbfs": -60.0,
+  "exclude_low_energy": true,
+  "n_low_energy": 89,
+  "low_energy_sweep": {
+    "-40.0": 691,
+    "-50.0": 204,
+    "-60.0": 89,
+    "-70.0": 45
+  },
+  "low_energy_per_class": {
+    "down": 9,
+    "go": 12,
+    "left": 8,
+    "no": 8,
+    "right": 15,
+    "stop": 11,
+    "up": 15,
+    "yes": 11
+  },
+  "frame_dyn_db_median_low_energy": 8.74699688064814,
+  "frame_dyn_db_median_other": 42.54683363869859,
+  "n_files_with_any_clipping": 568,
+  "n_clipped_files": 54,
+  "clipped_per_class": {
+    "down": 6,
+    "go": 5,
+    "left": 9,
+    "no": 7,
+    "right": 6,
+    "stop": 6,
+    "up": 10,
+    "yes": 5
+  },
+  "abs_dc_offset_max": 0.23032368562030817,
+  "tukey_outliers": {
+    "RMS_dBFS": {
+      "lower_fence": -49.60261609604787,
+      "upper_fence": -4.7349919804004905,
+      "n_low": 215,
+      "n_high": 0
+    },
+    "Duration_sec": {
+      "lower_fence": 1.0,
+      "upper_fence": 1.0,
+      "n_low": 822,
+      "n_high": 0
+    }
+  },
+  "n_files_in_duplicate_groups": 54,
+  "n_duplicate_groups": 27,
+  "n_duplicate_groups_across_classes": 0,
+  "n_excluded": 115,
+  "exclude_reason_counts": {
+    "low_energy": 89,
+    "dup_extra": 27
+  },
+  "n_speakers": 1750,
+  "files_per_speaker": {
+    "count": 1750.0,
+    "mean": 4.571428571428571,
+    "std": 4.2243116928999855,
+    "min": 1.0,
+    "25%": 2.0,
+    "50%": 3.0,
+    "75%": 5.0,
+    "max": 33.0
+  },
+  "n_speakers_with_1_file": 190,
+  "n_speakers_in_ge2_classes": 1516,
+  "frac_speakers_in_ge2_classes": 0.8662857142857143,
+  "n_speakers_in_all_classes": 88,
+  "frac_files_from_speakers_in_ge2_classes": 0.96475,
+  "top5_speaker_share_of_files": 0.016875,
+  "max_files_one_speaker": 33,
+  "speakers_repeating_same_word": 830,
+  "majority_class": "down",
+  "majority_accuracy_full_data": 0.125,
+  "majority_macro_f1_full_data": 0.027777777777777776,
+  "split": {
+    "files_per_split": {
+      "train": 6400,
+      "val": 800,
+      "test": 800
+    },
+    "speakers_per_split": {
+      "test": 177,
+      "train": 1412,
+      "val": 161
+    },
+    "file_share_per_split": {
+      "train": 0.8,
+      "val": 0.1,
+      "test": 0.1
+    },
+    "class_counts_per_split": {
+      "test": {
+        "down": 88,
+        "go": 93,
+        "left": 107,
+        "no": 102,
+        "right": 99,
+        "stop": 108,
+        "up": 92,
+        "yes": 111
+      },
+      "train": {
+        "down": 799,
+        "go": 824,
+        "left": 797,
+        "no": 797,
+        "right": 798,
+        "stop": 801,
+        "up": 797,
+        "yes": 787
+      },
+      "val": {
+        "down": 113,
+        "go": 83,
+        "left": 96,
+        "no": 101,
+        "right": 103,
+        "stop": 91,
+        "up": 111,
+        "yes": 102
+      }
+    },
+    "pairwise_speaker_intersections": {
+      "test&train": 0,
+      "test&val": 0,
+      "train&val": 0
+    },
+    "files_per_split_after_exclusion": {
+      "train": 6317,
+      "test": 797,
+      "val": 771
+    },
+    "class_counts_per_split_after_exclusion": {
+      "test": {
+        "down": 88,
+        "go": 93,
+        "left": 107,
+        "no": 102,
+        "right": 99,
+        "stop": 106,
+        "up": 92,
+        "yes": 110
+      },
+      "train": {
+        "down": 792,
+        "go": 810,
+        "left": 788,
+        "no": 790,
+        "right": 786,
+        "stop": 789,
+        "up": 783,
+        "yes": 779
+      },
+      "val": {
+        "down": 109,
+        "go": 80,
+        "left": 93,
+        "no": 98,
+        "right": 98,
+        "stop": 90,
+        "up": 107,
+        "yes": 96
+      }
+    },
+    "baselines_on_test": {
+      "train_majority_class": "go",
+      "majority": {
+        "accuracy": 0.11668757841907151,
+        "macro_f1": 0.026123595505617977
+      },
+      "uniform_random": {
+        "accuracy_mean": 0.12538268506900876,
+        "macro_f1_mean": 0.12486403549564798,
+        "macro_f1_std": 0.0127718752075172,
+        "n_repetitions": 200
+      },
+      "n_test_files": 797
+    }
+  }
+}

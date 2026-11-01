@@ -22,8 +22,8 @@ audit:
   # low_energy_rms_dbfs only sets the DESCRIPTIVE flag `Low_Energy`. Files are excluded for
   # low energy only if exclude_low_energy is true, which is decided by the blinded listening
   # test (python -m src.energy_review score) using the rule frozen below, never by hand.
-  low_energy_rms_dbfs: -50.0
-  exclude_low_energy: false
+  low_energy_rms_dbfs: -60.0
+  exclude_low_energy: true
   low_energy_sweep_dbfs: [-40.0, -50.0, -60.0, -70.0]
 
 energy_review:                # blinded listening test (Phase 1, step 5) -- FROZEN BEFORE LISTENING

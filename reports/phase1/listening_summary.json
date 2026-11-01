@@ -1,0 +1,78 @@
+{
+  "n_listened": 36,
+  "protocol_valid": true,
+  "control_unusable_rate": 0.0,
+  "unusable_rate_threshold": 0.5,
+  "recommended_exclude_low_energy": true,
+  "recommended_threshold_dbfs": -60.0,
+  "decision_text": "طبق قاعده‌ی پیش‌ثبت‌شده، در بالاترین بازه‌ی دارای نرخ غیرقابل‌استفاده ≥ 50% (لبه‌ی بالایی -60 dBFS) اکثر کلیپ‌ها برای شنونده قابل‌تشخیص نبودند؛ بنابراین همه‌ی فایل‌های با RMS کمتر از -60 dBFS از train/val/test حذف می‌شوند.",
+  "table_md": "| بازه‌ی RMS (dBFS) | فایل‌های داده | کلیپ‌های شنیده‌شده | غیرقابل‌استفاده | نرخ (فاصله‌ی اطمینان ۹۵٪ ویلسون) |\n|---|---|---|---|---|\n| <-70 | 45 | 6 | 6 | 100% (61%–100%) |\n| -70..-60 | 44 | 6 | 5 | 83% (44%–97%) |\n| -60..-50 | 115 | 6 | 1 | 17% (3%–56%) |\n| -50..-40 | 487 | 6 | 1 | 17% (3%–56%) |\n| -40..-30 | 2154 | 6 | 0 | 0% (0%–39%) |\n| >=-30 (control) | 5155 | 6 | 0 | 0% (0%–39%) |",
+  "bins": [
+    {
+      "bin": 0,
+      "label": "<-70",
+      "population": 45,
+      "n_listened": 6,
+      "n_unusable": 6,
+      "n_unsure": 6,
+      "rate": 1.0,
+      "ci_lo": 0.6096569663469354,
+      "ci_hi": 0.9999999999999999
+    },
+    {
+      "bin": 1,
+      "label": "-70..-60",
+      "population": 44,
+      "n_listened": 6,
+      "n_unusable": 5,
+      "n_unsure": 4,
+      "rate": 0.8333333333333334,
+      "ci_lo": 0.43649056343635395,
+      "ci_hi": 0.9699474141282697
+    },
+    {
+      "bin": 2,
+      "label": "-60..-50",
+      "population": 115,
+      "n_listened": 6,
+      "n_unusable": 1,
+      "n_unsure": 0,
+      "rate": 0.16666666666666666,
+      "ci_lo": 0.03005258587173032,
+      "ci_hi": 0.563509436563646
+    },
+    {
+      "bin": 3,
+      "label": "-50..-40",
+      "population": 487,
+      "n_listened": 6,
+      "n_unusable": 1,
+      "n_unsure": 1,
+      "rate": 0.16666666666666666,
+      "ci_lo": 0.03005258587173032,
+      "ci_hi": 0.563509436563646
+    },
+    {
+      "bin": 4,
+      "label": "-40..-30",
+      "population": 2154,
+      "n_listened": 6,
+      "n_unusable": 0,
+      "n_unsure": 0,
+      "rate": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.3903430336530645
+    },
+    {
+      "bin": 5,
+      "label": ">=-30 (control)",
+      "population": 5155,
+      "n_listened": 6,
+      "n_unusable": 0,
+      "n_unsure": 0,
+      "rate": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.3903430336530645
+    }
+  ]
+}
