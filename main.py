@@ -58,6 +58,10 @@ def main():
     summary["split"]["class_counts_per_split_after_exclusion"] = pd.crosstab(
         clean["Split"], clean["Word_Class"]).to_dict("index")
     summary["split"]["baselines_on_test"] = trivial_baselines(clean, cfg["seed"])
+    # descriptive: where do low-energy / very short files fall (all rows, before exclusion)?
+    summary["split"]["low_energy_per_split"] = split_df.groupby("Split")["Low_Energy"].sum().astype(int).to_dict()
+    summary["split"]["very_short_per_split"] = split_df.groupby("Split")["Very_Short"].sum().astype(int).to_dict()
+    summary["split"]["median_rms_dbfs_per_split"] = split_df.groupby("Split")["RMS_dBFS"].median().round(2).to_dict()
     save_split(split_df, resolve(cfg, cfg["split"]["out_dir"] + "/x").parent)
 
     audit.save_tables(df, summary, tables, summary_path)

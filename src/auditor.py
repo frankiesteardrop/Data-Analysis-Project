@@ -203,6 +203,41 @@ class SpeechDataAuditor:
         s["speakers_repeating_same_word"] = int(
             (df.groupby(["Speaker_ID", "Word_Class"]).size() > 1).groupby("Speaker_ID").any().sum())
 
+        # is low energy a property of a few speakers/recordings? (descriptive; informs leakage risk #7)
+        le = df[df["Low_Energy"]]
+        top4 = le["Speaker_ID"].value_counts().head(4)
+        s["low_energy_n_speakers"] = int(le["Speaker_ID"].nunique())
+        s["low_energy_top4_speakers_files"] = int(top4.sum())
+        s["low_energy_top4_speakers_share"] = float(top4.sum() / len(le)) if len(le) else float("nan")
+        spk = df.groupby("Speaker_ID")["RMS_dBFS"].agg(["mean", "size"])
+        s["rms_between_speaker_sd_db"] = float(spk.loc[spk["size"] >= 5, "mean"].std())
+        s["rms_overall_sd_db"] = float(df["RMS_dBFS"].std())
+
+        # univariate table (centre, spread, shape); excess kurtosis
+        cols = [("Duration_sec", "طول (ثانیه)"), ("RMS_dBFS", "RMS (dBFS)"), ("Peak", "Peak"),
+                ("Clip_Frac", "Clip_Frac"), ("ZCR", "ZCR"), ("Spec_Centroid_Hz", "مرکز طیفی (Hz)"),
+                ("Frame_Dyn_dB", "Frame_Dyn_dB")]
+        rows = ["| متغیر | میانگین | میانه | انحراف معیار | IQR | چولگی | کشیدگی (اضافی) |", "|---|---|---|---|---|---|---|"]
+        for c, lab in cols:
+            x = df[c][np.isfinite(df[c])]
+            q1, q3 = x.quantile([0.25, 0.75])
+            rows.append(f"| {lab} | {x.mean():.4g} | {x.median():.4g} | {x.std():.4g} | {q3 - q1:.4g} | "
+                        f"{x.skew():.2f} | {x.kurt():.2f} |")
+        s["univariate_md"] = "\n".join(rows)
+
+        # how much of each variable's variance is between classes (eta^2 = SS_between / SS_total)?
+        eta = {}
+        for c in ["Duration_sec", "RMS_dBFS", "ZCR", "Spec_Centroid_Hz"]:
+            x = df[c][np.isfinite(df[c])]
+            ssb = sum(len(g) * (g.mean() - x.mean()) ** 2 for _, g in x.groupby(df["Word_Class"]))
+            eta[c] = float(ssb / ((x - x.mean()) ** 2).sum())
+        s["eta_squared_by_class"] = eta
+        pc = df.groupby("Word_Class").agg(zcr=("ZCR", "median"), cen=("Spec_Centroid_Hz", "median"),
+                                          rms=("RMS_dBFS", "median"), dur=("Duration_sec", "mean"))
+        rows = ["| کلاس | میانه‌ی ZCR | میانه‌ی مرکز طیفی (Hz) | میانه‌ی RMS (dBFS) | میانگین طول (ثانیه) |", "|---|---|---|---|---|"]
+        rows += [f"| {w} | {r.zcr:.3f} | {r.cen:.0f} | {r.rms:.1f} | {r.dur:.3f} |" for w, r in pc.iterrows()]
+        s["per_class_md"] = "\n".join(rows)
+
         # trivial baselines on the whole (unsplit) data; recomputed on the real test split later
         p = df["Word_Class"].value_counts(normalize=True)
         k = len(p)

@@ -91,7 +91,7 @@ class SpeechDataVisualizer:
         for t in self.a["low_energy_sweep_dbfs"]:
             axes[0].axvline(t, color="grey", ls=":", lw=1)
         axes[0].axvline(self.a["low_energy_rms_dbfs"], color="red", ls="--",
-                        label=f"provisional threshold {self.a['low_energy_rms_dbfs']:.0f} dBFS")
+                        label=f"descriptive flag / listening-test cut-off: {self.a['low_energy_rms_dbfs']:.0f} dBFS")
         axes[0].set_xlabel("RMS level (dBFS)"); axes[0].set_ylabel("Clips"); axes[0].legend()
         axes[0].set_title("Energy distribution with threshold sweep (dotted)")
         data = [d.loc[d["Word_Class"] == w, "RMS_dBFS"] for w in self.words]

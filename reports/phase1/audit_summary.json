@@ -120,7 +120,7 @@
     "up": 10,
     "yes": 5
   },
-  "abs_dc_offset_max": 0.23032368562030817,
+  "abs_dc_offset_max": 0.2303236856203081,
   "tukey_outliers": {
     "RMS_dBFS": {
       "lower_fence": -49.60261609604787,
@@ -162,6 +162,19 @@
   "top5_speaker_share_of_files": 0.016875,
   "max_files_one_speaker": 33,
   "speakers_repeating_same_word": 830,
+  "low_energy_n_speakers": 32,
+  "low_energy_top4_speakers_files": 54,
+  "low_energy_top4_speakers_share": 0.6067415730337079,
+  "rms_between_speaker_sd_db": 8.736744944716309,
+  "rms_overall_sd_db": 9.51634653497037,
+  "univariate_md": "| متغیر | میانگین | میانه | انحراف معیار | IQR | چولگی | کشیدگی (اضافی) |\n|---|---|---|---|---|---|---|\n| طول (ثانیه) | 0.9837 | 1 | 0.06143 | 0 | -4.60 | 23.27 |\n| RMS (dBFS) | -28.03 | -26.6 | 9.516 | 11.22 | -1.59 | 5.57 |\n| Peak | 0.4632 | 0.4028 | 0.3028 | 0.534 | 0.33 | -1.16 |\n| Clip_Frac | 0.0003331 | 0 | 0.004385 | 0 | 23.87 | 693.03 |\n| ZCR | 0.1478 | 0.1326 | 0.08243 | 0.1129 | 0.76 | 0.26 |\n| مرکز طیفی (Hz) | 846.5 | 740.5 | 527.3 | 452.7 | 2.80 | 13.22 |\n| Frame_Dyn_dB | 43.11 | 42.32 | 17.25 | 24.9 | 0.10 | -0.39 |",
+  "eta_squared_by_class": {
+    "Duration_sec": 0.005040012278342932,
+    "RMS_dBFS": 0.003943014256926728,
+    "ZCR": 0.27336133357721853,
+    "Spec_Centroid_Hz": 0.12515911706681515
+  },
+  "per_class_md": "| کلاس | میانه‌ی ZCR | میانه‌ی مرکز طیفی (Hz) | میانه‌ی RMS (dBFS) | میانگین طول (ثانیه) |\n|---|---|---|---|---|\n| down | 0.102 | 748 | -26.1 | 0.988 |\n| go | 0.100 | 585 | -26.3 | 0.977 |\n| left | 0.153 | 725 | -26.4 | 0.988 |\n| no | 0.095 | 563 | -26.7 | 0.981 |\n| right | 0.132 | 756 | -26.4 | 0.987 |\n| stop | 0.195 | 942 | -26.3 | 0.987 |\n| up | 0.119 | 783 | -27.3 | 0.977 |\n| yes | 0.237 | 963 | -27.4 | 0.985 |",
   "majority_class": "down",
   "majority_accuracy_full_data": 0.125,
   "majority_macro_f1_full_data": 0.027777777777777776,
@@ -268,6 +281,21 @@
         "n_repetitions": 200
       },
       "n_test_files": 797
+    },
+    "low_energy_per_split": {
+      "test": 3,
+      "train": 69,
+      "val": 17
+    },
+    "very_short_per_split": {
+      "test": 0,
+      "train": 6,
+      "val": 2
+    },
+    "median_rms_dbfs_per_split": {
+      "test": -28.63,
+      "train": -26.3,
+      "val": -27.08
     }
   }
 }

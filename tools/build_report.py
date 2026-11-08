@@ -23,7 +23,7 @@ TODO = re.compile(r"\[\[TODO:(.*?)\]\]", re.S)
 
 CSS = """
 @page { size: A4; margin: 18mm 15mm; }
-body { direction: rtl; text-align: right; font-family: 'Vazirmatn','Vazir','Noto Naskh Arabic','Tahoma',sans-serif;
+body { direction: rtl; text-align: right; font-family: 'Vazirmatn','Vazirmatn NL','Vazir','Noto Naskh Arabic','Tahoma',sans-serif;
        font-size: 11pt; line-height: 1.85; color:#111; }
 h1 { font-size: 16pt; border-bottom: 2px solid #4a6fa5; padding-bottom: 4px; margin-top: 26px; }
 h1.title { font-size: 19pt; border: none; text-align: center; }
@@ -35,6 +35,10 @@ pre { background: #f5f5f5; padding: 8px; }
 img { max-width: 100%; display: block; margin: 8px auto; }
 blockquote { border-right: 4px solid #4a6fa5; margin: 8px 0; padding: 2px 12px; background: #f4f7fb; }
 mark.todo { background: #fff3a0; }
+h1 { break-after: avoid; }
+p:has(+ table), p:has(+ img) { break-after: avoid; }
+th, td { unicode-bidi: plaintext; }
+tr { break-inside: avoid; }
 """
 
 

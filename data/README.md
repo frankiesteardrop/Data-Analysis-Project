@@ -8,7 +8,7 @@ Last checked against public documentation: 2026-11-01.
 | Download URL | http://storage.googleapis.com/download.tensorflow.org/data/mini_speech_commands.zip (the form used by the tutorial; `configs/config.yaml` uses the https form of the same path) |
 | Archive SHA-256 | `49650f2341b26d886b46b3f4fb8fed59e30300b17550f1ee4a768b3106cf93a0` (also stored in `configs/config.yaml`, key `data.zip_sha256`) |
 | Archive size | The tutorial's download log reports 182,082,353 bytes. Local check: see the checklist below |
-| Source release (v0.01 / v0.02) | **Not stated by any source found.** The tutorial describes the full dataset as 105,000+ files and 35 words, which matches the published v0.02 figures (105,829 files, released 2018-04-11; v0.01 has 64,727 files, released 2017-08-03). That is circumstantial: we do NOT assume which release the mini archive was cut from |
+| Source release (v0.01 / v0.02) | **v0.01**, per the archive's own `README.md` (read from the extracted archive): it tells readers to see the original dataset `speech_commands_v0.01.tar.gz` for documentation and license information. It does not literally say "cut from v0.01"; this is the only release it names. The tutorial's description of the full dataset (105,000+ files, 35 words) matches v0.02 figures instead, so that sentence is NOT used to characterise this subset (v0.01: 64,727 files, released 2017-08-03; v0.02: 105,829 files, 2018-04-11) |
 | Classes | down, go, left, no, right, stop, up, yes (1000 clips each, 8000 total; verified by `main.py`, which fails if the class folders or counts differ) |
 | Not included | Silence / Unknown classes and `_background_noise_` recordings (the loader's structure check passes with exactly the 8 class folders), and official train/validation/test lists |
 | Archive contents | 8 class folders plus a `README.md` inside `mini_speech_commands/` (the tutorial filters this file out of the class list). Extraction may also create an unrelated `__MACOSX` folder |
@@ -22,13 +22,13 @@ Last checked against public documentation: 2026-11-01.
 | Privacy | The dataset consists of voices donated online, and its dataset card states that users agree not to attempt to determine speakers' identities. We comply: speaker IDs are used only to build speaker-disjoint splits and to analyse generalisation |
 
 ## Verification checklist (done / still to do)
-- [x] Full-dataset description in the tutorial (105,000+ files, 35 words) read; it is consistent with v0.02 figures
-- [ ] Which release the mini archive derives from: **unresolved**; no source found states it. Check `data/mini_speech_commands/README.md` (inside the archive) and write what it says here, or keep "not stated"
+- [x] Full-dataset description in the tutorial (105,000+ files, 35 words) read; it matches v0.02 figures and is therefore not used for this subset
+- [x] Which release the mini archive derives from: the archive's own README names v0.01 (see table)
 - [x] License (CC BY 4.0) and required citation checked against the tutorial and the dataset card
 - [x] No demographic fields in the published feature list of the full dataset (we checked the dataset card, not every file of the mini archive)
 - [x] Unique speakers in this subset = 1750 (our audit)
 - [ ] Local archive size equals 182,082,353 bytes (PowerShell: `(Get-Item data\mini_speech_commands.zip).Length`)
-- [ ] Contents of the archive's own `README.md` read
+- [x] Contents of the archive's own `README.md` read
 
 ## How to obtain
 `python main.py` downloads the archive, checks its SHA-256, extracts it to `data/mini_speech_commands/` and validates the folder structure. Everything under `data/` except this file is git-ignored.
