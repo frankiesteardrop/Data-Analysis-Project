@@ -1,7 +1,7 @@
 # Keyword Spotting on Google Speech Commands (Data Analysis course, Fall 2026)
 
-Individual project, **Path D** (audio / keyword spotting). This repository currently covers **Phase 1**
-(problem understanding, data audit, EDA, leakage design). Later phases will be added with their own tags.
+Individual project, **Path D** (audio / keyword spotting). This repository covers **Phase 1** (problem understanding, data audit, EDA, leakage design, tag `phase-1`) and
+**Phase 2** (data preparation, feature engineering, pattern discovery, tag `phase-2`). Later phases get their own tags.
 
 **Question (Q1):** under a *speaker-disjoint* split, how much does macro-F1 degrade as additive-noise SNR
 decreases, and does a small CNN on log-mel features degrade less than a classical MFCC baseline?
@@ -37,6 +37,24 @@ python tools/build_report.py --pdf   # fill report_template.md from audit_summar
 | Figures | `figures/phase1/` |
 | Speaker-disjoint split (locked test set) | `configs/splits/` (`speakers_*.txt`, `split_manifest.csv`) |
 | AI usage disclosure | `AI_USAGE.md` |
+
+## Reproduce Phase 2
+```bash
+pip install -r requirements.txt
+python main_phase2.py            # waveforms -> features (+train-only augmentation, val noise) -> PCA/UMAP/clustering -> figures
+python -m pytest tests
+python tools/build_report.py --phase 2 --pdf     # -> reports/phase2.pdf
+```
+Config: `configs/config.yaml` -> `phase2` (frozen before the first run). The **test split is never read** in Phase 2
+(`--include-test` only extracts clean test features; nothing analyses them).
+
+| Phase 2 output | Location |
+|---|---|
+| Report | `reports/phase2.pdf` (source `reports/phase2/report_template.md`) |
+| Pipeline code | `src/preprocess.py`, `src/augment.py`, `src/features.py`, `src/discovery.py`, `src/phase2_figs.py`, `main_phase2.py` |
+| Engineered features + logic | report section 3, `reports/phase2/tables/engineered_features.csv` |
+| Figures (DR + clustering + diagnostics) | `figures/phase2/` |
+| Numbers | `reports/phase2/phase2_summary.json`, `reports/phase2/tables/` |
 
 ## Layout
 ```

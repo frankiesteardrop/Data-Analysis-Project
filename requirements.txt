@@ -9,3 +9,6 @@ matplotlib>=3.8
 pyyaml>=6.0
 markdown>=3.5
 pytest>=8.0
+scikit-learn
+umap-learn
+joblib

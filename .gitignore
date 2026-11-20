@@ -9,5 +9,5 @@ __pycache__/
 .ipynb_checkpoints/
 
 # build artefacts
-reports/phase1/build/
+reports/phase*/build/
 .DS_Store

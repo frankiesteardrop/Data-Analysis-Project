@@ -1,0 +1,397 @@
+{
+  "preprocessing": {
+    "train": {
+      "n_clips": 6317,
+      "n_padded": 673,
+      "n_cropped": 0,
+      "frac_padded": 0.1065379136,
+      "valid_sec_median": 1.0,
+      "valid_sec_min": 0.4266875,
+      "valid_sec_p5": 0.853375,
+      "median_pad_samples": 1882.0
+    },
+    "val": {
+      "n_clips": 771,
+      "n_padded": 57,
+      "n_cropped": 0,
+      "frac_padded": 0.0739299611,
+      "valid_sec_median": 1.0,
+      "valid_sec_min": 0.4586875,
+      "valid_sec_p5": 0.896,
+      "median_pad_samples": 2625.0
+    }
+  },
+  "missing": {
+    "train_nan_mfcc": 0,
+    "train_nan_eng": 0,
+    "val_nan_mfcc": 0,
+    "val_nan_eng": 0,
+    "train_nan_f0": 8,
+    "val_nan_f0": 3,
+    "train_inf": 0,
+    "f0_impute_value_hz": 138.46147738166093
+  },
+  "excluded_in_phase1": 115,
+  "speakers": {
+    "n_train_speakers": 1409,
+    "n_speakers_ge_min": 140,
+    "clips_in_speakers_ge_min": 2106,
+    "top_group_sizes": [
+      27,
+      24,
+      22,
+      22,
+      22,
+      21,
+      21,
+      21
+    ]
+  },
+  "engineered": {
+    "n": 16,
+    "redundant_pairs": [
+      [
+        "centroid_mean",
+        "rolloff_mean",
+        0.9500996369203613
+      ]
+    ],
+    "mean_eta2_word": 0.16053340210858,
+    "mean_eta2_speaker": 0.47655658914039223,
+    "mean_eta2_speaker_shuffled": 0.06282138513927867,
+    "top3_word": [
+      "zcr_std",
+      "centroid_std",
+      "spectral_tilt"
+    ],
+    "top3_rms": [
+      "flux_mean",
+      "bandwidth_mean",
+      "flatness_mean"
+    ]
+  },
+  "feature_sets": {
+    "mfcc": {
+      "n_features": 52,
+      "var_explained_pc10": 0.5271338427494696,
+      "silhouette_true_words": -0.021738079382092535,
+      "knn10_word_purity": 0.2733417761595694,
+      "knn10_spk_enrichment": 68.95066801316577,
+      "kmeans8_nmi_word_train": 0.06589892648948605,
+      "kmeans8_nmi_word_chance": 0.001815519785064696,
+      "kmeans8_nmi_word_val": 0.07528989257340048,
+      "kmeans8_nmi_loudness": 0.0380762675990387,
+      "kmeans8_nmi_loudness_chance": 0.0007027664171383441
+    },
+    "mfcc_noc0": {
+      "n_features": 48,
+      "var_explained_pc10": 0.5407219470641507,
+      "silhouette_true_words": -0.023878599413810833,
+      "knn10_word_purity": 0.2846287794839322,
+      "knn10_spk_enrichment": 60.097027461067846,
+      "kmeans8_nmi_word_train": 0.06783695632269961,
+      "kmeans8_nmi_word_chance": 0.0018623074719263482,
+      "kmeans8_nmi_word_val": 0.10729854027545901,
+      "kmeans8_nmi_loudness": 0.03932580358526536,
+      "kmeans8_nmi_loudness_chance": 0.0007730703380330629
+    },
+    "eng": {
+      "n_features": 16,
+      "var_explained_pc10": 0.9707042916114027,
+      "silhouette_true_words": -0.03875419604096625,
+      "knn10_word_purity": 0.3046541079626405,
+      "knn10_spk_enrichment": 83.76170124274704,
+      "kmeans8_nmi_word_train": 0.11019975488360848,
+      "kmeans8_nmi_word_chance": 0.0019808151755029836,
+      "kmeans8_nmi_word_val": 0.15453840851174222,
+      "kmeans8_nmi_loudness": 0.01764248502296572,
+      "kmeans8_nmi_loudness_chance": 0.0006919281434245222
+    },
+    "mfcc+eng": {
+      "n_features": 68,
+      "var_explained_pc10": 0.5600079081673299,
+      "silhouette_true_words": -0.011507857169951409,
+      "knn10_word_purity": 0.33156561659015354,
+      "knn10_spk_enrichment": 88.41102681626482,
+      "kmeans8_nmi_word_train": 0.10393942271577254,
+      "kmeans8_nmi_word_chance": 0.0019010111942238603,
+      "kmeans8_nmi_word_val": 0.1445441730041698,
+      "kmeans8_nmi_loudness": 0.030649809405960102,
+      "kmeans8_nmi_loudness_chance": 0.000698917985160148
+    },
+    "logmel_ms": {
+      "n_features": 128,
+      "var_explained_pc10": 0.9424754977226257,
+      "silhouette_true_words": -0.02442983165383339,
+      "knn10_word_purity": 0.30846921006807027,
+      "knn10_spk_enrichment": 147.819673419378,
+      "kmeans8_nmi_word_train": 0.021543700582409193,
+      "kmeans8_nmi_word_chance": 0.0018332244357804831,
+      "kmeans8_nmi_word_val": 0.035431623271794006,
+      "kmeans8_nmi_loudness": 0.14808847219980334,
+      "kmeans8_nmi_loudness_chance": 0.0007491961464595428
+    }
+  },
+  "pca": {
+    "var_ratio_pc1_5": [
+      0.22383081567260366,
+      0.05525192825275548,
+      0.04381910939318639,
+      0.037605538029632374,
+      0.03283390451353547
+    ],
+    "cum_var_pc2": 0.27908274392535914,
+    "cum_var_pc10": 0.5271338427494696,
+    "n_pc_80": 25,
+    "n_pc_95": 38
+  },
+  "pc_eta2": {
+    "eta2_word": [
+      0.055912000234687266,
+      0.026905274811448422,
+      0.12846720339683257,
+      0.41183650102957964,
+      0.019406364884044992,
+      0.07494684554190933,
+      0.030888688774607244,
+      0.05296140936762546,
+      0.016341218411653015,
+      0.041094274302835354
+    ],
+    "eta2_speaker": [
+      0.7296993474240783,
+      0.7270880992690925,
+      0.6225472414975685,
+      0.24189821202157566,
+      0.1776594309865857,
+      0.3693398663017641,
+      0.27419924657558326,
+      0.28248163555490374,
+      0.15146166990784954,
+      0.11624966763027686
+    ],
+    "eta2_speaker_shuffled": [
+      0.07606582584321173,
+      0.08466150386411156,
+      0.04792701991671274,
+      0.06320396361400878,
+      0.06759983992670614,
+      0.0597040402511883,
+      0.06171028161901577,
+      0.058623841752836574,
+      0.06823690537138481,
+      0.06616649565345754
+    ],
+    "eta2_loudness": [
+      0.08011438862596312,
+      0.0009211669344317972,
+      0.037508981196538144,
+      0.0014282311171268484,
+      0.0001940309175882917,
+      0.003533140470763468,
+      0.001598991813369194,
+      0.006360223183055105,
+      0.002223528122777717,
+      0.00016605873398349433
+    ],
+    "eta2_duration": [
+      0.01960099421847106,
+      0.006259339800468148,
+      0.0708626336712273,
+      0.02120602991512957,
+      0.003586326030488999,
+      0.019415393152793788,
+      0.019245135551326054,
+      0.02938191726909798,
+      0.002193132939717038,
+      0.004316851432154218
+    ],
+    "var_explained": [
+      0.22383081567260366,
+      0.05525192825275548,
+      0.04381910939318639,
+      0.037605538029632374,
+      0.03283390451353547,
+      0.031878121045691744,
+      0.028201998193532616,
+      0.02635730105004709,
+      0.024679159893868038,
+      0.022675966704616777
+    ]
+  },
+  "knn_primary": {
+    "word_purity": 0.2733417761595694,
+    "word_chance": 0.125,
+    "spk_given_word": 0.06642728904847396,
+    "spk_given_word_chance": 0.0009634031251994546,
+    "spk_enrichment": 68.95066801316577
+  },
+  "pc_summary": {
+    "max_eta2_word_pc": 4,
+    "max_eta2_word": 0.41183650102957964,
+    "max_eta2_loudness_pc": 1,
+    "max_eta2_loudness": 0.08011438862596312,
+    "max_eta2_speaker_pc": 1,
+    "max_eta2_speaker": 0.7296993474240783
+  },
+  "pc1_top_loadings": [
+    "d_mfcc6_std",
+    "d_mfcc2_std",
+    "d_mfcc5_std",
+    "d_mfcc3_std",
+    "d_mfcc8_std"
+  ],
+  "k_selection": {
+    "k_selected": 2,
+    "rule": "argmax silhouette over k_range (k-means, standard scaling, PCA-10); stability reported alongside",
+    "silhouette_at_k": 0.23556405858227894,
+    "silhouette_at_8": 0.10164232080985657,
+    "stability_at_k": {
+      "seed_ari": 0.9922836368044274,
+      "subsample_ari": 0.9868943265597409,
+      "scaling_ari_robust": 0.8898423825682693,
+      "scaling_ari_minmax": 0.8696456989143516,
+      "scaling_ari_no_c0": 0.8235939894309039
+    },
+    "stability_at_8": {
+      "seed_ari": 0.6529312734547209,
+      "subsample_ari": 0.8825329459384056,
+      "scaling_ari_robust": 0.37949231395832894,
+      "scaling_ari_minmax": 0.6715715974581402,
+      "scaling_ari_no_c0": 0.6018812897447609
+    },
+    "stable_threshold": 0.8,
+    "k_stable": [
+      2
+    ],
+    "k_best_stability": 2
+  },
+  "clusters_k2": {
+    "purity_word": 0.1632103846762704,
+    "purity_loudness_tertile": 0.4388158936203894,
+    "nmi_word": 0.011090420418055112,
+    "nmi_word_chance": 0.00044685112984252574,
+    "ari_word": 0.007100964920881076,
+    "nmi_speaker": 0.1184875390229858,
+    "nmi_speaker_chance": 0.012965717455192139,
+    "nmi_loudness": 0.03857468111327,
+    "nmi_loudness_chance": 0.00022797608639887803,
+    "nmi_word_val": 0.007552872452092879,
+    "ari_word_val": 0.002978405491536693,
+    "sizes": [
+      3411,
+      2906
+    ]
+  },
+  "clusters_k8": {
+    "purity_word": 0.24014563875257242,
+    "purity_loudness_tertile": 0.4630362513851512,
+    "nmi_word": 0.06589892648948605,
+    "nmi_word_chance": 0.0018705741857535708,
+    "ari_word": 0.03590054426514814,
+    "nmi_speaker": 0.2784726068500537,
+    "nmi_speaker_chance": 0.0767882686625647,
+    "nmi_loudness": 0.0380762675990387,
+    "nmi_loudness_chance": 0.0007641624211102928,
+    "nmi_word_val": 0.07528989257340048,
+    "ari_word_val": 0.03598353100873965,
+    "sizes": [
+      633,
+      1099,
+      768,
+      1006,
+      238,
+      821,
+      1197,
+      555
+    ]
+  },
+  "ward8": {
+    "nmi_word": 0.04912490087688066,
+    "ari_vs_kmeans8": 0.37591355891907524
+  },
+  "umap": {
+    "trustworthiness_pca2": 0.8223217949885877,
+    "trustworthiness_umap2": 0.8709896143612689,
+    "kmeans8_on_umap_nmi_word": 0.024388635524408245,
+    "seed_ari_kmeans8_on_umap": 0.5943744667852352,
+    "knn10_word_purity_umap": 0.1851670096564825,
+    "knn10_word_purity_pca2": 0.14131708089282888,
+    "val_knn_word_purity": 0.27185473411154343
+  },
+  "augmentation": {
+    "n_aug": 6317,
+    "frac_with_noise": 0.4932721228431217,
+    "noise_counts": {
+      "none": 3201,
+      "babble": 1071,
+      "white": 1047,
+      "pink": 998
+    },
+    "gain_db_min": -5.999796817469698,
+    "gain_db_max": 5.999328328586181,
+    "shift_ms_min": -100.0,
+    "shift_ms_max": 100.0,
+    "measured_snr_abs_err_max": 0.0008983612060546875,
+    "source_is_nn_frac": 0.29428526199145166,
+    "nn_other_same_word": 0.27592211492797214,
+    "nmi_word_kmeans8_aug": 0.03804903094082411,
+    "nmi_word_kmeans8_orig": 0.06589892648948605,
+    "median_displacement": 2.8781017044157156,
+    "median_displacement_by_noise": {
+      "none": 1.7737985531324894,
+      "babble": 4.57053027596459,
+      "pink": 6.274266948148771,
+      "white": 6.526951858923653
+    },
+    "median_displacement_by_snr": {
+      "5.0": 6.354682962596104,
+      "10.0": 5.771381598860107,
+      "20.0": 4.3258205914079415
+    },
+    "spearman_disp_gain": -0.0002461593639421703,
+    "train_only_check": "augmentation executed on rows with Split == train only (asserted in src/augment.py)"
+  },
+  "noise": {
+    "clean": {
+      "nmi_k8": 0.07528989257340048,
+      "nmi_ksel": 0.007552872452092879,
+      "knn_word": 0.27185473411154343
+    },
+    "worst_condition": {
+      "condition": "white_0dB",
+      "noise": "white",
+      "snr_db": 0.0,
+      "nmi_word_k8": 0.0,
+      "nmi_word_ksel": 0.0,
+      "knn_word_purity": 0.14435797665369648,
+      "centroid_shift_pc12": 8.098673036002655,
+      "mean_displacement": 9.283366316189898,
+      "frac_same_cluster_k8": 0.1245136186770428
+    },
+    "nmi_word_k8_at_0db": {
+      "babble": 0.033430282724747545,
+      "pink": 0.0,
+      "white": 0.0
+    },
+    "nmi_word_k8_at_20db": {
+      "babble": 0.06605816852400997,
+      "pink": 0.0661319627770389,
+      "white": 0.048785116277816815
+    },
+    "knn_word_at_0db": {
+      "babble": 0.15058365758754863,
+      "pink": 0.15797665369649805,
+      "white": 0.14435797665369648
+    },
+    "knn_word_at_20db": {
+      "babble": 0.20959792477302205,
+      "pink": 0.2640726329442283,
+      "white": 0.23994811932555124
+    },
+    "nmi_noise_type_vs_cluster_k8_low_snr": 0.5549075232332522,
+    "nmi_word_vs_cluster_k8_low_snr": 0.010278425507573125,
+    "nmi_snr_vs_cluster_k8": 0.07139660209705813,
+    "nmi_word_vs_cluster_k8_all": 0.016577019778436636
+  }
+}
