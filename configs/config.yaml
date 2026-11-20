@@ -52,3 +52,56 @@ paths:
   tables_dir: reports/phase1/tables
   summary_json: reports/phase1/audit_summary.json
   listening_json: reports/phase1/listening_summary.json
+
+# ======================================================================================
+# Phase 2 -- data preparation, feature engineering, pattern discovery.
+# EVERYTHING BELOW IS FROZEN BEFORE THE FIRST PHASE-2 RUN (commit "phase2: freeze config").
+# The test split is never read in Phase 2 unless `python main_phase2.py --include-test` is
+# used, and no analysis in the Phase-2 report uses it.
+# ======================================================================================
+phase2:
+  seed: 42
+  sr: 16000
+  target_len: 16000            # 1 s. shorter clips: zero-padded at the END; longer: first 1 s kept (crop)
+  features:
+    n_fft: 400                 # 25 ms window
+    hop: 160                   # 10 ms hop
+    n_mfcc: 13
+    n_mels_mfcc: 40            # mel bands feeding the DCT of the MFCCs
+    n_mels_logmel: 64          # log-mel for the Phase-3 CNN (same as the Phase-1 EDA)
+    fmin: 0
+    fmax: 8000
+    delta_width: 9
+    active_thresh_db: 35       # a frame is "active" if its level is within 35 dB of the clip's loudest frame
+    rolloff_pct: 0.85
+    f0: {fmin: 70, fmax: 400, frame_length: 1024}
+    low_band_hz: 1000          # energy-ratio feature: < 1 kHz vs > 4 kHz
+    high_band_hz: 4000
+    max_feature_corr: 0.95     # engineered features correlated above this (train, Spearman) are reported as redundant
+  augmentation:                # TRAIN ONLY. one augmented copy per train clip
+    gain_db: [-6.0, 6.0]       # uniform
+    shift_ms: [-100, 100]      # uniform, zero fill
+    noise_prob: 0.5            # probability that noise is added
+    noise_types: [white, pink, babble]
+    noise_snr_db: [5.0, 10.0, 20.0]   # one drawn uniformly
+    babble_n: 6                # babble = sum of 6 other clips of the SAME split
+  noise_conditions:            # VAL ONLY (diagnostic); fixed seed
+    types: [white, pink, babble]
+    snr_db: [20.0, 10.0, 5.0, 0.0]
+  discovery:
+    pca_components_for_clustering: 10
+    umap: {n_neighbors: 15, min_dist: 0.1, metric: euclidean}
+    k_range: [2, 16]
+    k_selection_rule: "argmax silhouette over k_range (k-means, standard scaling, PCA-10); stability reported alongside"
+    stable_ari_threshold: 0.8   # a pattern is called "stable" only if mean pairwise ARI >= 0.8
+    n_seeds: 10
+    n_subsamples: 10
+    subsample_frac: 0.8
+    min_clips_per_speaker_group: 8   # speakers with fewer train clips are not used as colour groups
+    n_speaker_groups_plot: 8         # largest speakers shown as anonymous letters A..H
+    silhouette_sample: 4000          # silhouette on a fixed random subsample for speed
+  paths:
+    features_dir: data/features
+    figures_dir: figures/phase2
+    tables_dir: reports/phase2/tables
+    summary_json: reports/phase2/phase2_summary.json
